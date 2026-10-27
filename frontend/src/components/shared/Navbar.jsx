@@ -74,14 +74,14 @@ const Navbar = () => {
                 <div className="flex items-center gap-3">
                     {!user ? (
                         <div className="flex items-center gap-2">
-                            <Link 
-                                to="/login" 
+                            <Link
+                                to="/login"
                                 className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50 rounded-lg transition"
                             >
                                 Login
                             </Link>
-                            <Link 
-                                to="/signup" 
+                            <Link
+                                to="/signup"
                                 className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-sm transition"
                             >
                                 Register
@@ -100,7 +100,7 @@ const Navbar = () => {
                             </button>
 
                             {dropdownOpen && (
-                                <div 
+                                <div
                                     className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-slate-100 py-2 z-50 animate-in fade-in slide-in-from-top-2"
                                     onClick={() => setDropdownOpen(false)}
                                 >
@@ -108,10 +108,10 @@ const Navbar = () => {
                                         <p className="text-sm font-semibold text-slate-900">{user.fullname}</p>
                                         <p className="text-xs text-slate-500 truncate">{user.email}</p>
                                         <span className={`inline-block mt-1 text-[11px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider ${
-                                            user.role === 'admin' 
-                                                ? 'bg-purple-100 text-purple-700' 
-                                                : user.role === 'recruiter' 
-                                                    ? 'bg-blue-100 text-blue-700' 
+                                            user.role === 'admin'
+                                                ? 'bg-purple-100 text-purple-700'
+                                                : user.role === 'recruiter'
+                                                    ? 'bg-blue-100 text-blue-700'
                                                     : 'bg-emerald-100 text-emerald-700'
                                         }`}>
                                             {user.role}
@@ -119,8 +119,8 @@ const Navbar = () => {
                                     </div>
 
                                     {user.role === 'jobseeker' && (
-                                        <Link 
-                                            to="/profile" 
+                                        <Link
+                                            to="/profile"
                                             className="flex items-center gap-2 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50"
                                         >
                                             <UserIcon className="w-4 h-4 text-slate-400" /> My Profile
@@ -129,14 +129,14 @@ const Navbar = () => {
 
                                     {user.role === 'recruiter' && (
                                         <>
-                                            <Link 
-                                                to="/admin/companies" 
+                                            <Link
+                                                to="/admin/companies"
                                                 className="flex items-center gap-2 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50"
                                             >
                                                 <Building2 className="w-4 h-4 text-slate-400" /> Companies
                                             </Link>
-                                            <Link 
-                                                to="/admin/jobs" 
+                                            <Link
+                                                to="/admin/jobs"
                                                 className="flex items-center gap-2 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50"
                                             >
                                                 <LayoutDashboard className="w-4 h-4 text-slate-400" /> Manage Jobs
@@ -145,8 +145,8 @@ const Navbar = () => {
                                     )}
 
                                     {user.role === 'admin' && (
-                                        <Link 
-                                            to="/system/admin" 
+                                        <Link
+                                            to="/system/admin"
                                             className="flex items-center gap-2 px-4 py-2 text-sm text-slate-700 hover:bg-slate-50"
                                         >
                                             <Shield className="w-4 h-4 text-slate-400" /> Admin Dashboard
