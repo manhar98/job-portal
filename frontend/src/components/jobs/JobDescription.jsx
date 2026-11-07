@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { APPLICATION_API_END_POINT, JOB_API_END_POINT } from '../../utils/constant';
+import { APPLICATION_API_END_POINT, JOB_API_END_POINT, BASE_URL } from '../../utils/constant';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSingleJob } from '../../redux/jobSlice';
 import Navbar from '../shared/Navbar';
@@ -104,7 +104,11 @@ const JobDescription = () => {
                         <div className="flex items-start gap-4">
                             <div className="w-14 h-14 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-xl overflow-hidden shrink-0">
                                 {singleJob?.company?.logo ? (
-                                    <img src={`http://localhost:8000${singleJob?.company?.logo}`} alt="logo" className="w-full h-full object-cover" />
+                                    <img 
+                                        src={singleJob.company.logo.startsWith('http') ? singleJob.company.logo : `${BASE_URL}${singleJob.company.logo}`} 
+                                        alt="logo" 
+                                        className="w-full h-full object-cover" 
+                                    />
                                 ) : (
                                     <Building2 className="w-7 h-7" />
                                 )}

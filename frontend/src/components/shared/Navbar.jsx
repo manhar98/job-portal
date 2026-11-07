@@ -15,10 +15,10 @@ const Navbar = () => {
     const logoutHandler = async () => {
         try {
             await axios.get(`${USER_API_END_POINT}/logout`, { withCredentials: true });
-            dispatch(setUser(null));
-            navigate("/");
         } catch (error) {
             console.error(error);
+        } finally {
+            localStorage.removeItem("token");
             dispatch(setUser(null));
             navigate("/");
         }

@@ -4,6 +4,17 @@ import './index.css';
 import App from './App.jsx';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import axios from 'axios';
+
+// Automatically attach Bearer token to all axios calls if logged in
+axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers = config.headers || {};
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>

@@ -5,6 +5,7 @@ import AppliedJobTable from './AppliedJobTable';
 import UpdateProfileDialog from './UpdateProfileDialog';
 import { useSelector } from 'react-redux';
 import { Mail, Phone, Edit, Download } from 'lucide-react';
+import { BASE_URL } from '../../utils/constant';
 
 const Profile = () => {
     const [openDialog, setOpenDialog] = useState(false);
@@ -82,7 +83,7 @@ const Profile = () => {
                         </div>
                         {user?.profile?.resume ? (
                             <a
-                                href={`http://localhost:8000${user.profile.resume}`}
+                                href={user.profile.resume.startsWith('http') ? user.profile.resume : `${BASE_URL}${user.profile.resume}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-medium hover:bg-slate-800 transition"

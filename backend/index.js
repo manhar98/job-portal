@@ -26,19 +26,20 @@ app.use("/uploads", express.static(path.resolve("public/uploads")));
 
 // CORS Configuration
 const allowedOrigins = [
-    process.env.FRONTEND_URL || "http://localhost:5173",
+    process.env.FRONTEND_URL,
+    "http://localhost:5173",
     "http://127.0.0.1:5173",
     "http://localhost:5174",
     "http://127.0.0.1:5174"
-];
+].filter(Boolean);
 
 app.use(cors({
     origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(null, true); // Allow during local development
+        // Allow requests with no origin, vercel domains, or allowed list
+        if (!origin || allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
+            return callback(null, true);
         }
+        return callback(null, true);
     },
     credentials: true
 }));

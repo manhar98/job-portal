@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-import { APPLICATION_API_END_POINT } from '../../utils/constant';
+import { APPLICATION_API_END_POINT, BASE_URL } from '../../utils/constant';
 import { Download } from 'lucide-react';
 
 const ApplicantsTable = ({ onStatusChange }) => {
@@ -65,16 +65,20 @@ const ApplicantsTable = ({ onStatusChange }) => {
                                         {item?.applicant?.phoneNumber || "N/A"}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {item?.resume || item?.applicant?.profile?.resume ? (
-                                            <a
-                                                href={`http://localhost:8000${item?.resume || item?.applicant?.profile?.resume}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-1 text-xs font-semibold text-indigo-600 hover:text-indigo-800 hover:underline"
-                                            >
-                                                <Download className="w-3.5 h-3.5" /> View Resume
-                                            </a>
-                                        ) : (
+                                        {item?.resume || item?.applicant?.profile?.resume ? (() => {
+                                            const resumePath = item?.resume || item?.applicant?.profile?.resume;
+                                            const fullResumeUrl = resumePath.startsWith('http') ? resumePath : `${BASE_URL}${resumePath}`;
+                                            return (
+                                                <a
+                                                    href={fullResumeUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center gap-1 text-xs font-semibold text-indigo-600 hover:text-indigo-800 hover:underline"
+                                                >
+                                                    <Download className="w-3.5 h-3.5" /> View Resume
+                                                </a>
+                                            );
+                                        })() : (
                                             <span className="text-xs text-slate-400">None</span>
                                         )}
                                     </td>

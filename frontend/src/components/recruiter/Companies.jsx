@@ -3,7 +3,7 @@ import Navbar from '../shared/Navbar';
 import Footer from '../shared/Footer';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { COMPANY_API_END_POINT } from '../../utils/constant';
+import { COMPANY_API_END_POINT, BASE_URL } from '../../utils/constant';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCompanies } from '../../redux/companySlice';
 import { Building2, Plus, Edit, ExternalLink, MapPin } from 'lucide-react';
@@ -76,7 +76,11 @@ const Companies = () => {
                                     <div className="flex items-start justify-between gap-3 mb-3">
                                         <div className="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center font-bold text-slate-700 overflow-hidden">
                                             {company.logo ? (
-                                                <img src={`http://localhost:8000${company.logo}`} alt="logo" className="w-full h-full object-cover" />
+                                                <img 
+                                                    src={company.logo.startsWith('http') ? company.logo : `${BASE_URL}${company.logo}`} 
+                                                    alt="logo" 
+                                                    className="w-full h-full object-cover" 
+                                                />
                                             ) : (
                                                 <Building2 className="w-6 h-6 text-indigo-600" />
                                             )}

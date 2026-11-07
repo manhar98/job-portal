@@ -3,7 +3,7 @@ import Navbar from '../shared/Navbar';
 import Footer from '../shared/Footer';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { COMPANY_API_END_POINT } from '../../utils/constant';
+import { COMPANY_API_END_POINT, BASE_URL } from '../../utils/constant';
 import { ArrowLeft, Loader2, Upload, Building2 } from 'lucide-react';
 
 const CompanySetup = () => {
@@ -34,7 +34,7 @@ const CompanySetup = () => {
                         location: c.location || "",
                         file: null
                     });
-                    if (c.logo) setPreviewLogo(`http://localhost:8000${c.logo}`);
+                    if (c.logo) setPreviewLogo(c.logo.startsWith('http') ? c.logo : `${BASE_URL}${c.logo}`);
                 }
             } catch (error) {
                 console.error("Fetch Single Company Error:", error);
