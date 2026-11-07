@@ -62,7 +62,11 @@ app.get("/api/health", (req, res) => {
 
 const PORT = process.env.PORT || 8000;
 
-app.listen(PORT, async () => {
-    await connectDB();
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", async () => {
+    try {
+        await connectDB();
+    } catch (e) {
+        console.error("DB connect error on startup:", e);
+    }
+    console.log(`🚀 Server running on port ${PORT}`);
 });

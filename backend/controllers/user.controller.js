@@ -110,7 +110,8 @@ export const login = async (req, res) => {
             userId: user._id,
             role: user.role
         };
-        const token = jwt.sign(tokenData, process.env.SECRET_KEY, { expiresIn: '7d' });
+        const secretKey = process.env.SECRET_KEY || "jobportal_super_secret_jwt_key_2026";
+        const token = jwt.sign(tokenData, secretKey, { expiresIn: '7d' });
 
         const safeUser = {
             _id: user._id,

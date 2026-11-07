@@ -15,7 +15,8 @@ const isAuthenticated = async (req, res, next) => {
             });
         }
 
-        const decode = jwt.verify(token, process.env.SECRET_KEY);
+        const secretKey = process.env.SECRET_KEY || "jobportal_super_secret_jwt_key_2026";
+        const decode = jwt.verify(token, secretKey);
         if (!decode) {
             return res.status(401).json({
                 message: "Invalid or expired token.",

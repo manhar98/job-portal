@@ -1,0 +1,9 @@
+{
+  "name": "job-portal-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node backend/index.js",
+    "build": "cd backend && npm install"
+  }
+}
