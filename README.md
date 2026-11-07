@@ -4,6 +4,12 @@ A modern, responsive, and robust **MERN Stack Job Portal** that connects job see
 
 ---
 
+🌐 Live Demo
+
+Live Project: https://job-portal-psi-plum.vercel.app/
+
+---
+
 ## 🌟 Key Features
 
 ### 🧑‍💼 1. Job Seeker Module
