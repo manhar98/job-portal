@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: job-portal-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: FRONTEND_URL
+        value: http://localhost:5173
