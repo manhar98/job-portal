@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
-const DEFAULT_MONGO_URI = "mongodb+srv://manharzapdiya9898_db_user:EWL3xJCd6gBtkeBU@cluster0.zy2qkre.mongodb.net/jobportal?retryWrites=true&w=majority";
-const DIRECT_MONGO_URI = "mongodb://manharzapdiya9898_db_user:EWL3xJCd6gBtkeBU@ac-uh6uqt7-shard-00-00.zy2qkre.mongodb.net:27017,ac-uh6uqt7-shard-00-01.zy2qkre.mongodb.net:27017,ac-uh6uqt7-shard-00-02.zy2qkre.mongodb.net:27017/jobportal?ssl=true&replicaSet=atlas-uh6uqt-shard-0&authSource=admin&retryWrites=true&w=majority";
+const DEFAULT_MONGO_URI = "mongodb+srv://manharzapdiya9898_db_user:Mjz%409898@cluster0.zy2qkre.mongodb.net/jobportal?retryWrites=true&w=majority";
+const DIRECT_MONGO_URI = "mongodb://manharzapdiya9898_db_user:Mjz%409898@ac-uh6uqt7-shard-00-00.zy2qkre.mongodb.net:27017,ac-uh6uqt7-shard-00-01.zy2qkre.mongodb.net:27017,ac-uh6uqt7-shard-00-02.zy2qkre.mongodb.net:27017/jobportal?ssl=true&replicaSet=atlas-uh6uqt-shard-0&authSource=admin&retryWrites=true&w=majority";
 
 const connectDB = async () => {
     const connUri = process.env.MONGO_URI || DEFAULT_MONGO_URI;
